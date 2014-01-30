@@ -19,4 +19,6 @@ h1 { font-size: 32pt; }
 
 .users { text-align: center; }
 
-.control input { width : 50%; height: 50px; }
+.control { background-color: #fff; }
+.control label { width: 20%; }
+.control input { width : 70%; height: 50px; }

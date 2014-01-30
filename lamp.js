@@ -8,7 +8,7 @@ var express = require('express'),
     users   = 0;
 
 
-server.listen(1439);
+server.listen(1337);
 
 
 // Create routes for static content and the index
@@ -20,11 +20,21 @@ app.get('/', function (req, res)
 
 // LAMP
 var five = require("johnny-five"),
-    board = new five.Board();
+    board = new five.Board(),
+    pins = [3, 5, 6, 9, 10, 11];
 
 board.on("ready", function()
 {
     var arduino = this;
+
+    function everyPin(value)
+    {
+        for(var i = pins.length - 1; i >= 0; i--)
+        {
+            arduino.analogWrite(pins[i], value);
+        }
+    }
+
     arduino.pinMode(3, five.Pin.PWM);
     arduino.pinMode(5, five.Pin.PWM);
     arduino.pinMode(6, five.Pin.PWM);
@@ -40,6 +50,9 @@ board.on("ready", function()
     {
         users++;
 
+        // Turn the lights on when someone connects
+        everyPin(255);
+
         // Notify other clients of the new user
         io.sockets.emit('users', {count: users});
 
@@ -49,13 +62,14 @@ board.on("ready", function()
         // Update the arduino... trusting user input!?!?!
         socket.on('update', function(update)
         {
+            io.sockets.emit('update', update);
             arduino.analogWrite(update.pin, update.value);
         });
 
         // Bye bye :'(
         socket.on('disconnect', function ()
         {
-            users--;        
+            users--; 
             io.sockets.emit('users', {count: users});
         });
     });

@@ -23,11 +23,32 @@ $(document).ready(function()
        
     socket.on('users', function(users)
     {
-        $('.footer .users a').text('Users: '+users.count);
+        // If it's a new user
+        if(users.count > $('.footer .users a').attr('users'))
+        {
+            $('.control').removeAttr('style');
+            $('.control input').val(255);
+        }
+        
+        $('.footer .users a').attr('users', users.count).text('Users: '+users.count);
+    });
+
+    socket.on('update', function(update)
+    {
+        var pin = $('input[name="'+update.pin+'"]');
+        var parent = pin.parents('ul');
+        var colors = parent.find('input');
+        
+        parent.css('background-color', 'rgb('+ colors.eq(0).val() +','+ colors.eq(1).val() +','+ colors.eq(2).val() +')');
+        pin.val(update.value);
     });
 
     $('body').on('change', '.control input', function()
     {
+        var parent = $(this).parents('ul');
+        var colors = parent.find('input');
+        
+        parent.css('background-color', 'rgb('+ colors.eq(0).val() +','+ colors.eq(1).val() +','+ colors.eq(2).val() +')');
         socket.emit('update', {pin: $(this).attr('name'), value: $(this).val()});
     });
 });
