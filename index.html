@@ -1,0 +1,45 @@
+
+<html>
+    <head>
+        <title>Lamp!</title>
+        
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/jquery-1.9.1.min.js"></script>
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="/css/lamp.css">
+
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/lamp.js"></script>
+    </head>
+
+    <body>
+        <section class="slides">
+            <article class="slide slide-wrap slide-box">
+                <div class="slide-inner">
+                    <h1>Today's topics:</h1>
+                    <ul class="control">
+                        <li>Pin 3 (Red): 0<input type="range" name="3" min="0" max="255" value="0">255</li>
+                        <li>Pin 5 (Green): 0<input type="range" name="5" min="0" max="255" value="0">255</li>
+                        <li>Pin 6 (Blue): 0<input type="range" name="6" min="0" max="255" value="0">255</li>
+                    </ul>
+
+                    <ul class="control">
+                        <li>Pin 9 (Red): 0<input type="range" name="9" min="0" max="255" value="0">255</li>
+                        <li>Pin 10 (Green): 0<input type="range" name="10" min="0" max="255" value="0">255</li>
+                        <li>Pin 11 (Blue): 0<input type="range" name="11" min="0" max="255" value="0">255</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+        
+        <nav class="footer navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+            <ul class="nav navbar-nav col-md-12">
+                <li class="status active col-md-4"><a>Loading...</a></li>
+                <li class="users col-md-4"><a></a></li>
+            </ul>
+        </nav>
+    </body>
+</html>
+

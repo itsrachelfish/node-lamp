@@ -18,15 +18,15 @@ var fade = {value: 0, step: 1};
 
 function loop(board)
 {
-    if(fade.value < 0)
+    if(fade.value < 64)
     {
-        fade.value = 0;
+        fade.value = 64;
         fade.step = 1;
     }
     
-    if(fade.value > 255)
+    if(fade.value > 128)
     {
-        fade.value = 255;
+        fade.value = 128;
         fade.step = -1;
     }
     
@@ -34,11 +34,11 @@ function loop(board)
     board.analogWrite(5, fade.value);
     board.analogWrite(6, fade.value);    
     
-    board.analogWrite(9, fade.value);
-    board.analogWrite(10, fade.value);
-    board.analogWrite(11, fade.value);    
+    board.analogWrite(9, fade.value + 64);
+    board.analogWrite(10, fade.value + 32);
+    board.analogWrite(11, fade.value + 16);    
     
     fade.value += fade.step;
 
-    setTimeout(function() { loop(board) }, 5);
+    setTimeout(function() { loop(board) }, 25);
 } 

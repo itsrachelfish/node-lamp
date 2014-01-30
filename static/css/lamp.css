@@ -1,0 +1,22 @@
+body { overflow: hidden; background-color: #ddd; }
+
+a { cursor: pointer; }
+h1 { font-size: 32pt; }
+
+.slides { position: relative; }
+.slide-wrap { position: relative; }
+.slide-inner { padding: 10px; }
+
+.title-box { position: fixed; top: 0; bottom: 0; left: 0; right: 0; background-color: #fff; }
+.slide-box { font-size: 16pt; background-color: #fff; padding:0.25em 1em; border: 1px solid #ccc; border-radius: 8px; position: fixed; top: 50px; bottom: 100px; left: 5%; right: 5%  }
+
+.slide-box { -webkit-box-shadow: 0px 5px 30px -4px rgba(50, 50, 50, 0.8);
+                -moz-box-shadow:    0px 5px 30px -4px rgba(50, 50, 50, 0.8);
+                box-shadow:         0px 5px 30px -4px rgba(50, 50, 50, 0.8); }
+                
+.slide-hide { display: none; }
+.slide-show { display: inline; }
+
+.users { text-align: center; }
+
+.control input { width : 50%; height: 50px; }
